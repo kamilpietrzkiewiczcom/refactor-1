@@ -1,0 +1,23 @@
+services:
+
+  php-service-refactor-1:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - service-refactor-1
+
+  db-service-refactor-1:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: app
+    networks:
+      - service-refactor-1
+
+networks:
+  - service-refactor-1:
