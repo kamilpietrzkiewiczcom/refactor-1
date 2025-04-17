@@ -22,6 +22,7 @@ try {
     $factory = new $factory();
     $action($factory->getRequest());
 } catch (Exception $e) {
+    echo $e->getMessage() . "<br />";
     die('Here should be error handling. Didn`t add because of time');
 }
 

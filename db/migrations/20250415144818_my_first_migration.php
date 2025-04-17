@@ -19,6 +19,16 @@ final class MyFirstMigration extends AbstractMigration
      */
     public function change(): void
     {
-
+        $this->table('contracts', ['id' => false, 'primary_key' => 'pk'])
+            ->addColumn('pk', 'biginteger', [
+                'limit' => 20,
+                'identity' => true
+            ])
+            ->addColumn("id", "biginteger")
+            ->addColumn("companyTitle", "string", ["limit" => 512])
+            ->addColumn("tin", "string", ["limit" => 10])
+            ->addColumn("amount", "double")
+            ->changePrimaryKey(["pk"])
+            ->create();
     }
 }

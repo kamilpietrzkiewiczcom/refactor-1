@@ -20,10 +20,10 @@ return
         ],*/
         'development' => [
             'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'development_db',
+            'host' => 'db-service-refactor-1',
+            'name' => 'app',
             'user' => 'root',
-            'pass' => '',
+            'pass' => 'app',
             'port' => '3306',
             'charset' => 'utf8',
         ],

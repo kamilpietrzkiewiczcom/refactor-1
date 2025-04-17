@@ -2,10 +2,11 @@
 
 namespace App\Adapter\Controller;
 
-use Factories\ActionFactory;
+use App\Domain\AbstractAction;
+use App\Factories\ActionFactory;
 use Symfony\Component\HttpFoundation\Request;
 
-final class ActionRequest extends Request
+final class ActionRequest
 {
     private Request $httpRequest;
 
@@ -19,13 +20,23 @@ final class ActionRequest extends Request
         $this->httpRequest = $request;
     }
 
-    public function getAction(): int
+    public function isValid(): bool
+    {
+        return $this->getId() !== null;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->httpRequest->query->get('id');
+    }
+
+    public function getAction(): AbstractAction
     {
         return ActionFactory::get($this->httpRequest->query->get('akcja'));
     }
 
-    public function getSort(): int
+    public function getSort(): ?int
     {
-        return ActionFactory::get($this->httpRequest->query->get('sort'));
+        return $this->httpRequest->query->get('sort');
     }
 }

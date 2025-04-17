@@ -34,23 +34,27 @@ class ContractBuilder
         return $this->amount;
     }
 
-    public function setId(ContractId $id): void
+    public function setId(ContractId $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
-    public function setCompanyName(CompanyTitle $companyName): void
+    public function setCompanyName(CompanyTitle $companyName): self
     {
         $this->companyName = $companyName;
+        return $this;
     }
 
-    public function setTaxIdentificationNumber(AbstractTaxIdentificationNumber $taxIdentificationNumber): void
+    public function setTaxIdentificationNumber(AbstractTaxIdentificationNumber $taxIdentificationNumber): self
     {
         $this->taxIdentificationNumber = $taxIdentificationNumber;
+        return $this;
     }
 
-    public function setAmount(Amount $amount): void
+    public function setAmount(Amount $amount): self
     {
         $this->amount = $amount;
+        return $this;
     }
 }

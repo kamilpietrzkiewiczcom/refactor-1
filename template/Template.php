@@ -7,13 +7,17 @@
                     $entry = $collection->current();
                     ?>
                     <tr>
-                        <td>'.$z[0];</td>
+                        <td><?= $entry->getId() ?></td>
                         <td>
-                            echo $z[2];
-                            if (is_a(ShowDefaultContracts::class, $action)) && ($z[10] > 5) { echo ' '; echo $z[10];}
+                            <?= $entry->getCompanyName(); ?>
+
+                            <?php if (is_a($action, \App\Domain\DefaultContractsAction::class)) : ?>
+                                <?php if ($entry->getAmount() > 5): echo $entry->getAmount(); endif;  ?>
+                            <?php endif; ?>
                         </td>
                     <tr>
                     <?php
+                    $entry = $collection->next();
                 endwhile;
             ?>
         </table>

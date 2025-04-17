@@ -14,10 +14,22 @@ services:
   db-service-refactor-1:
     image: mariadb
     restart: always
+    ports:
+      - "3306:3306"
     environment:
       MARIADB_ROOT_PASSWORD: app
     networks:
       - service-refactor-1
 
+  phpmyadmin-service-refactor-1:
+    image: phpmyadmin
+    restart: always
+    networks:
+      - service-refactor-1
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1
+
 networks:
-  - service-refactor-1:
+  service-refactor-1:
