@@ -23,6 +23,10 @@ class SqlPdoContractRepository implements ContractsRepository
         return $this->getSpecificContracts($contractId, $sort);
     }
 
+    /**
+     * here we could use specification pattern to simplify method
+     * for simplicity I used raw approach
+     */
     private function getSpecificContracts(
         ContractId $contractId,
         SortCollection $sort = new SortCollection()
